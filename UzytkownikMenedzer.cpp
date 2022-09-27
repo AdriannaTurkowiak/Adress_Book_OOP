@@ -72,6 +72,7 @@ int UzytkownikMenedzer::logowanieUzytkownika()
 {
     vector <Uzytkownik> uzytkownicy;
     uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
+
     MetodyPomocnicze metodyPomocnicze;
     Uzytkownik uzytkownik;
     string login = "", haslo = "";
@@ -104,3 +105,26 @@ int UzytkownikMenedzer::logowanieUzytkownika()
     system("pause");
     return 0;
 }
+
+void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika(int idZalogowanegoUzytkownika)
+{
+    vector <Uzytkownik> uzytkownicy;
+    uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
+
+    MetodyPomocnicze metodyPomocnicze;
+    string noweHaslo = "";
+    cout << "Podaj nowe haslo: ";
+    noweHaslo = metodyPomocnicze.wczytajLinie();
+
+    for (int i = 0; i < (int) uzytkownicy.size(); i++)
+    {
+        if (uzytkownicy[i].pobierzId() == idZalogowanegoUzytkownika)
+        {
+            uzytkownicy[i].ustawHaslo(noweHaslo);
+            cout << "Haslo zostalo zmienione." << endl;
+            system("pause");
+        }
+    }
+    plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
+}
+
