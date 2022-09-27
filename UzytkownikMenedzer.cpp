@@ -69,6 +69,43 @@ void UzytkownikMenedzer::wczytajUzytkownikowZPliku()
 }
 
 int UzytkownikMenedzer::logowanieUzytkownika()
+/*{
+    vector <Uzytkownik> uzytkownicy;
+    uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
+    MetodyPomocnicze metodyPomocnicze;
+    Uzytkownik uzytkownik;
+    string login = "", haslo = "";
+
+    cout << endl << "Podaj login: ";
+    login = metodyPomocnicze.wczytajLinie();
+
+    vector <Uzytkownik>::iterator itr = uzytkownicy.begin();
+    while (itr != uzytkownicy.end())
+    {
+        if (itr -> pobierzLogin() == login)
+        {
+            for (int iloscProb = 3; iloscProb > 0; iloscProb--)
+            {
+                cout << "Podaj haslo. Pozostalo prob: " << iloscProb << ": ";
+                haslo = metodyPomocnicze.wczytajLinie();
+
+                if (itr -> pobierzHaslo() == haslo)
+                {
+                    cout << endl << "Zalogowales sie." << endl << endl;
+                    system("pause");
+                    return itr -> pobierzId();
+                }
+            }
+            cout << "Wprowadzono 3 razy bledne haslo." << endl;
+            system("pause");
+            return 0;
+        }
+        itr++;
+    }
+    cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
+    system("pause");
+    return 0;
+}*/
 {
     vector <Uzytkownik> uzytkownicy;
     uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
@@ -93,7 +130,8 @@ int UzytkownikMenedzer::logowanieUzytkownika()
                 {
                     cout << endl << "Zalogowales sie." << endl << endl;
                     system("pause");
-                    return uzytkownicy[i].pobierzId();
+                    int idZalogowanegoUzytkownika = uzytkownicy[i].pobierzId();
+                    return idZalogowanegoUzytkownika;
                 }
             }
             cout << "Wprowadzono 3 razy bledne haslo." << endl;
@@ -128,3 +166,8 @@ void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika(int idZalogowanegoUz
     plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
 }
 
+int UzytkownikMenedzer::wylogowanieUzytkownika()
+{
+    int idZalogowanegoUzytkownika = 0;
+    return idZalogowanegoUzytkownika;
+}
