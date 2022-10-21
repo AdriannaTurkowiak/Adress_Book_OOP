@@ -10,6 +10,7 @@
 #include "Uzytkownik.h"
 #include "PlikZUzytkownikami.h"
 #include "MetodyPomocnicze.h"
+#include "AdresatMenedzer.h"
 
 using namespace std;
 
@@ -17,20 +18,25 @@ class UzytkownikMenedzer
 {
     int idZalogowanegoUzytkownika;
     vector <Uzytkownik> uzytkownicy;
+    PlikZUzytkownikami plikZUzytkownikami;
 
     Uzytkownik podajDaneNowegoUzytkownika();
     int pobierzIdNowegoUzytkownika();
     bool czyIstniejeLogin(string login);
-    PlikZUzytkownikami plikZUzytkownikami;
 
 public:
-    UzytkownikMenedzer (string nazwaPlikuZUzytkownikami) : plikZUzytkownikami (nazwaPlikuZUzytkownikami){};
+    UzytkownikMenedzer (string nazwaPlikuZUzytkownikami): plikZUzytkownikami (nazwaPlikuZUzytkownikami){
+    idZalogowanegoUzytkownika = 0;
+    uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
+    };
+    int pobierzIdZalogowanegoUzytkownika();
     void rejestracjaUzytkownika();
-    int logowanieUzytkownika(); //new
-    int wylogowanieUzytkownika(); //new
+    int logowanieUzytkownika();
+    int wylogowanieUzytkownika();
     void wypiszWszystkichUzytkownikow();
-    void zmianaHaslaZalogowanegoUzytkownika(int idZalogowanegoUzytkownika); //new
+    void zmianaHaslaZalogowanegoUzytkownika();
     void wczytajUzytkownikowZPliku();
+    bool czyUzytkownikJestZalogowany();
 };
 
 #endif

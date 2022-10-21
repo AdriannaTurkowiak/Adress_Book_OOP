@@ -1,5 +1,12 @@
 #include "KsiazkaAdresowa.h"
 
+Uzytkownik::Uzytkownik(unsigned int id, string login, string haslo)
+{
+    this -> id = id;
+    this -> login = login;
+    this -> haslo = haslo;
+}
+
 void Uzytkownik::ustawId(int noweId)
 {
     if(noweId >= 0)

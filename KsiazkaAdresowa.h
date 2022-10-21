@@ -5,24 +5,42 @@
 
 #include "UzytkownikMenedzer.h"
 #include "Uzytkownik.h"
+#include "AdresatMenedzer.h"
 
 using namespace std;
 
 class KsiazkaAdresowa
 {
     UzytkownikMenedzer uzytkownikMenedzer;
+    AdresatMenedzer adresatMenedzer;
+
     int idZalogowanegoUzytkownika;
+    const string NAZWA_PLIKU_Z_ADRESATAMI;
 
 public:
-    KsiazkaAdresowa(string nazwaPlikuZUzytkownikami) : uzytkownikMenedzer(nazwaPlikuZUzytkownikami)
+    KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami):
+        uzytkownikMenedzer(nazwaPlikuZUzytkownikami), NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami){
+        adresatMenedzer = NULL;
+    };
+   /* ~KsiazkaAdresowa()
     {
-        uzytkownikMenedzer.wczytajUzytkownikowZPliku();
-        };
+        delete adresatMenedzer;
+        adresatMenedzer = null;
+    };*/
     void rejestracjaUzytkownika();
     int logowanieUzytkownika();
     int wylogowanieUzytkownika();
-    void wypiszWszystkichUzytkownikow();
+    int pobierzIdZalogowanegoUzytkownika();
     void zmianaHaslaZalogowanegoUzytkownika(int idZalogowanegoUzytkownika);
+    int dodajAdresata();
+    bool czyUzytkownikJestZalogowany();
+    char wybierzOpcjeZMenuGlownego();
+    char wybierzOpcjeZMenuUzytkownika();
+    void wyszukajAdresatowPoImieniu();
+    void wyszukajAdresatowPoNazwisku();
+    void wyswietlWszystkichAdresatow();
+    void usunAdresata();
+    void edytujAdresata();
 
 };
 
