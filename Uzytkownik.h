@@ -12,8 +12,6 @@ class Uzytkownik
     string haslo;
 
 public:
-    Uzytkownik (unsigned int id = 0, string login = "", string haslo = "");
-
     void ustawId(int noweId);
     void ustawLogin(string nowyLogin);
     void ustawHaslo(string noweHaslo);

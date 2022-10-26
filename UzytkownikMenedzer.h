@@ -3,16 +3,11 @@
 
 #include <iostream>
 #include <vector>
-#include <windows.h>
 #include <fstream>
 #include <sstream>
 
-#include "Uzytkownik.h"
 #include "PlikZUzytkownikami.h"
-#include "MetodyPomocnicze.h"
-#include "AdresatMenedzer.h"
-
-using namespace std;
+#include "Uzytkownik.h"
 
 class UzytkownikMenedzer
 {
@@ -25,17 +20,16 @@ class UzytkownikMenedzer
     bool czyIstniejeLogin(string login);
 
 public:
-    UzytkownikMenedzer (string nazwaPlikuZUzytkownikami): plikZUzytkownikami (nazwaPlikuZUzytkownikami){
-    idZalogowanegoUzytkownika = 0;
-    uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
-    };
-    int pobierzIdZalogowanegoUzytkownika();
+    UzytkownikMenedzer(string nazwaPlikuZUzytkownikami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami) {
+        uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
+        idZalogowanegoUzytkownika = 0;
+    }
     void rejestracjaUzytkownika();
-    int logowanieUzytkownika();
-    int wylogowanieUzytkownika();
-    void wypiszWszystkichUzytkownikow();
+    void logowanieUzytkownika();
     void zmianaHaslaZalogowanegoUzytkownika();
-    void wczytajUzytkownikowZPliku();
+    void wylogowanieUzytkownika();
+
+    int pobierzIdZalogowanegoUzytkownika();
     bool czyUzytkownikJestZalogowany();
 };
 

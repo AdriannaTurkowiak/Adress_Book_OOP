@@ -12,12 +12,16 @@ class MetodyPomocnicze
 {
 
 public:
-    static bool czyPlikJestPusty(fstream &plikTekstowy);
-    static string konwerjsaIntNaString(int liczba);
+
+    static string konwersjaIntNaString(int liczba);
     static string wczytajLinie();
     static string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
     static int konwersjaStringNaInt(string liczba);
     static char wczytajZnak();
+    static int wczytajLiczbeCalkowita();
+    static void usunPlik(string nazwaPlikuZRozszerzeniem);
+    static void zmienNazwePliku(string nazwaTymczasowegoPlikuZRozszerzeniem, string nazwaPlikuZRozszerzeniem);
 
 };
+
 #endif

@@ -1,20 +1,18 @@
 #include "MetodyPomocnicze.h"
 
-string MetodyPomocnicze::konwerjsaIntNaString(int liczba)
+string MetodyPomocnicze::konwersjaIntNaString(int liczba)
 {
     ostringstream ss;
     ss << liczba;
     string str = ss.str();
     return str;
 }
-
 string MetodyPomocnicze::wczytajLinie()
 {
     string wejscie = "";
     getline(cin, wejscie);
     return wejscie;
 }
-
 string MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst)
 {
     if (!tekst.empty())
@@ -24,25 +22,13 @@ string MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst
     }
     return tekst;
 }
-
 int MetodyPomocnicze::konwersjaStringNaInt(string liczba)
 {
     int liczbaInt;
     istringstream iss(liczba);
     iss >> liczbaInt;
-
     return liczbaInt;
 }
-
-bool MetodyPomocnicze::czyPlikJestPusty(fstream &plikTekstowy)
-{
-    plikTekstowy.seekg(0, ios::end);
-    if (plikTekstowy.tellg() == 0)
-        return true;
-    else
-        return false;
-}
-
 char MetodyPomocnicze::wczytajZnak()
 {
     string wejscie = "";
@@ -60,4 +46,31 @@ char MetodyPomocnicze::wczytajZnak()
         cout << "To nie jest pojedynczy znak. Wpisz ponownie." << endl;
     }
     return znak;
+}
+int MetodyPomocnicze::wczytajLiczbeCalkowita()
+{
+    string wejscie = "";
+    int liczba = 0;
+
+    while (true)
+    {
+        getline(cin, wejscie);
+        stringstream myStream(wejscie);
+        if (myStream >> liczba)
+            break;
+        cout << "To nie jest liczba. Wpisz ponownie. " << endl;
+    }
+    return liczba;
+}
+void MetodyPomocnicze::usunPlik(string nazwaPlikuZRozszerzeniem)
+{
+    if (remove(nazwaPlikuZRozszerzeniem.c_str()) == 0) {}
+    else
+        cout << "Nie udalo sie usunac pliku " << nazwaPlikuZRozszerzeniem << endl;
+}
+void MetodyPomocnicze::zmienNazwePliku(string nazwaTymczasowegoPlikuZRozszerzeniem, string nazwaPlikuZRozszerzeniem)
+{
+    if (rename(nazwaTymczasowegoPlikuZRozszerzeniem.c_str(), nazwaPlikuZRozszerzeniem.c_str()) == 0) {}
+    else
+        cout << "Nazwa pliku nie zostala zmieniona." << nazwaPlikuZRozszerzeniem << endl;
 }
