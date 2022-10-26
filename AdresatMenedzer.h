@@ -3,36 +3,35 @@
 
 #include <iostream>
 #include <vector>
-#include <windows.h>
-#include <fstream>
-#include <sstream>
 
 #include "Adresat.h"
 #include "PlikZAdresatami.h"
-
-using namespace std;
+#include "MetodyPomocnicze.h"
 
 class AdresatMenedzer
 {
-
+    vector<Adresat> adresaci;
     PlikZAdresatami plikZAdresatami;
     const int ID_ZALOGOWANEGO_UZYTKOWNIKA;
-    vector <Adresat> adresaci;
 
     Adresat podajDaneNowegoAdresata();
+    void wyswietlDaneAdresata(Adresat adresat);
+    void wyswietlIloscWyszukanychAdresatow(int iloscAdresatow);
 
 public:
-    AdresatMenedzer(string nazwaPlikuZAdresatami, int idZalogowanegoUzytkownika):
-      plikZAdresatami(nazwaPlikuZAdresatami), ID_ZALOGOWANEGO_UZYTKOWNIKA(idZalogowanegoUzytkownika)
-      {
-      adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
-      }
-
+    AdresatMenedzer(string nazwaPlikuZAdresatami,int idZalogowanegoUzytkownika)
+        : plikZAdresatami(nazwaPlikuZAdresatami),ID_ZALOGOWANEGO_UZYTKOWNIKA(idZalogowanegoUzytkownika){
+        adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
+    }
     void dodajAdresata();
+    void wyszukajAdresatowPoImieniu();
+    void wyszukajAdresatowPoNazwisku();
     void wyswietlWszystkichAdresatow();
-    void wyswietlDaneAdresata(Adresat adresat);
-    Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
-    vector <Adresat> wczytajAdresatowZPliku(int idZalogowanegoUzytkownika);
+    int usunAdresata();
+    void edytujAdresata();
+    int podajIdWybranegoAdresata();
+    char wybierzOpcjeZMenuEdycja();
+    void zaktualizujDaneWybranegoAdresata(Adresat adresat);
 
 };
 

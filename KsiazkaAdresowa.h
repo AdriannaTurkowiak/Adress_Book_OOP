@@ -4,44 +4,37 @@
 #include <iostream>
 
 #include "UzytkownikMenedzer.h"
-#include "Uzytkownik.h"
 #include "AdresatMenedzer.h"
-
-using namespace std;
 
 class KsiazkaAdresowa
 {
     UzytkownikMenedzer uzytkownikMenedzer;
-    AdresatMenedzer adresatMenedzer;
-
-    int idZalogowanegoUzytkownika;
+    AdresatMenedzer *adresatMenedzer;
     const string NAZWA_PLIKU_Z_ADRESATAMI;
 
 public:
-    KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami):
-        uzytkownikMenedzer(nazwaPlikuZUzytkownikami), NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami){
+    KsiazkaAdresowa(string NAZWAPLIKUZUZYTKOWNIKAMI,string NAZWAPLIKUZADRESATAMI):
+        uzytkownikMenedzer(NAZWAPLIKUZUZYTKOWNIKAMI),NAZWA_PLIKU_Z_ADRESATAMI(NAZWAPLIKUZADRESATAMI){
         adresatMenedzer = NULL;
-    };
-   /* ~KsiazkaAdresowa()
-    {
+    }
+    ~KsiazkaAdresowa(){
         delete adresatMenedzer;
-        adresatMenedzer = null;
-    };*/
-    void rejestracjaUzytkownika();
-    int logowanieUzytkownika();
-    int wylogowanieUzytkownika();
-    int pobierzIdZalogowanegoUzytkownika();
-    void zmianaHaslaZalogowanegoUzytkownika(int idZalogowanegoUzytkownika);
-    int dodajAdresata();
-    bool czyUzytkownikJestZalogowany();
+        adresatMenedzer = NULL;
+    }
+
     char wybierzOpcjeZMenuGlownego();
+    void rejestracjaUzytkownika();
+    void logowanieUzytkownika();
+    bool czyUzytkownikJestZalogowany();
     char wybierzOpcjeZMenuUzytkownika();
+    void dodajAdresata();
     void wyszukajAdresatowPoImieniu();
     void wyszukajAdresatowPoNazwisku();
     void wyswietlWszystkichAdresatow();
+    void zmianaHaslaZalogowanegoUzytkownika();
+    void wylogowanieUzytkownika();
     void usunAdresata();
     void edytujAdresata();
-
 };
 
 #endif
