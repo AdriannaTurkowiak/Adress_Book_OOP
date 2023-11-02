@@ -2,10 +2,11 @@
 
 void UzytkownikMenedzer::rejestracjaUzytkownika()
 {
+    cout << uzytkownicy.size();
     Uzytkownik uzytkownik = podajDaneNowegoUzytkownika();
     uzytkownicy.push_back(uzytkownik);
     plikZUzytkownikami.dopiszUzytkownikaDoPliku(uzytkownik);
-
+cout << uzytkownicy.size();
     cout << endl << "Konto zalozono pomyslnie" << endl << endl;
     system("pause");
 }
